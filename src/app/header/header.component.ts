@@ -11,6 +11,7 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   private userSub: Subscription;
+  private userName: string;
 
   constructor(
     private dataStorageService: DataStorageService,
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       console.log(!user);
       console.log(!!user);
     });
+    this.userName = this.authService.user.value.email;
   }
 
   onSaveData() {
